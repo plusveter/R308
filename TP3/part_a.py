@@ -35,33 +35,34 @@ class Utilisateur:
 
     def emprunter_livre(self, livre):
         if livre.emprunter(self.nom): # fait la demande + vérifie si c'est possible d'emprunter un livre
-            self.emprunts.append(livre)
+            self.emprunts.append(livre) # ajoute la class livre dans la liste
             return True
         return False
 
     def rendre_livre(self, livre):
         if livre in self.emprunts: # vérifie si le livre est dans sa list
             if livre.rendre():
-                self.emprunts.remove(livre)
+                self.emprunts.remove(livre) # retire la classe livre dans la liste
                 return True
         return False
 
-    def afficher_emprunts(self):
+    def afficher_emprunts(self): 
         print("Emprunts de", self.nom)
         for livre in self.emprunts:
             print("-", livre.titre)
 
 
+if __name__ == "__main__": # lance le test seulement si le fichier est lancé principalement & non par d'autre fichier py
 
-livre1 = Livre("1984", "Orwell", 1949)
+    livre1 = Livre("1984", "Orwell", 1949)
 
-ana = Utilisateur("Ana")
-leo = Utilisateur("Léo")
+    ana = Utilisateur("Ana")
+    leo = Utilisateur("Léo")
 
-print(ana.emprunter_livre(livre1))
-print(leo.emprunter_livre(livre1))
+    print(ana.emprunter_livre(livre1))
+    print(leo.emprunter_livre(livre1))
 
-ana.afficher_emprunts()
+    ana.afficher_emprunts()
 
-print(ana.rendre_livre(livre1))
-print(leo.emprunter_livre(livre1))
+    print(ana.rendre_livre(livre1))
+    print(leo.emprunter_livre(livre1))
