@@ -1,4 +1,4 @@
-from .part_a import *
+from part_a import *
 
 class Bibliotheque:
     # Ressemble à une base de donnée
@@ -15,41 +15,34 @@ class Bibliotheque:
 
     def emprunter(self, nom, titre):
         if nom not in self.utilisateurs:
-            print("Utilisateur inconnu")
-            return False
+            print("Utilisateur inconnu") ; return False
 
         if titre not in self.livres:
-            print("Livre inconnu")
-            return False
+            print("Livre inconnu") ; return False
 
         utilisateur = self.utilisateurs[nom]
         livre = self.livres[titre]
 
         if utilisateur.emprunter_livre(livre):
-            print("Livre emprunté avec succès")
-            return True
+            print("Livre emprunté avec succès") ; return True
 
         print("Livre déjà emprunté")
         return False
 
     def rendre(self, nom, titre):
         if nom not in self.utilisateurs:
-            print("Utilisateur inconnu")
-            return False
+            print("Utilisateur inconnu") ; return False
 
         if titre not in self.livres:
-            print("Livre inconnu")
-            return False
+            print("Livre inconnu"); return False
 
         utilisateur = self.utilisateurs[nom]
         livre = self.livres[titre]
 
         if utilisateur.rendre_livre(livre):
-            print("Livre rendu avec succès")
-            return True
+            print("Livre rendu avec succès"); return True
 
-        print("Impossible de rendre ce livre")
-        return False
+        print("Impossible de rendre ce livre"); return False
 
     def afficher_livres(self):
         for livre in self.livres.values(): # Check si il y a des livre disponible of emprunté
